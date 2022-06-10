@@ -6,6 +6,7 @@
 let turnCounter = 1;
 let currentPlayer = 'Player One'
 console.log(currentPlayer);
+console.log(turnCounter)
 
 
 const container = document.querySelector('#container');
@@ -14,9 +15,12 @@ const squareDivs = document.getElementsByClassName('square');
 for (let i = 0; i < squareDivs.length; i++) {
     const squareDiv = document.getElementById(`div${[i]}`)
     squareDivs[i].addEventListener('click', function handleClick(e) {
-//       to set this to match player, we need to change it to
-//       e.target.setAttribute('class', PLACEHOLDERPLAYERVAR)
-        squareDivs[i].classList.add('playerOne')
+        // Adds appropriate image to clicked square
+        if (currentPlayer === 'Player One') {
+            squareDivs[i].classList.add('playerOne')
+        } else {
+            squareDivs[i].classList.add('playerTwo')
+        }
         turnCounter += 1;
         // changes player!
         if ((turnCounter % 2) ==! 0) {
@@ -24,8 +28,9 @@ for (let i = 0; i < squareDivs.length; i++) {
         } else {
             currentPlayer = 'Player Two';
         }
-        console.log((squareDivs[i]));
-        console.log(currentPlayer);
+        // console.log((squareDivs[i]));
+        // console.log(currentPlayer);
+        // console.log(turnCounter);
         })
 }
 
@@ -42,8 +47,8 @@ const divNine = document.querySelector('#div9');
 
 // on square click, we want to
 //  1. set background of div to either crow (image1) or forrester (image2) by
-//      change class (player1 or player2)!!!
-//  2. change the "turn order" variable to either Player 1 or Player 2
+//      change class (player1 or player2)!!! P1 DONE
+//  2. change the "turn order" variable to either Player 1 or Player 2 DONE
 //      2a. This should also change the "player1/player2 turn" text
 //  3. change over the background image to either image1 or image2
 //  4. WE WILL NEED A "MOVETRACKER" VARIABLE
