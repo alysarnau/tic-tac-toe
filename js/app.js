@@ -2,8 +2,8 @@
 // create game board
 // easier way to test draw conditions - start at the middle going down: down middle, up left, down right
 
-// reset button on click should reset inner html for container
 
+// reset button on click should reset inner html for container
 
 // on square click, we want to
 //  1. set background of div to either crow (image1) or forrester (image2)
@@ -31,6 +31,9 @@
 // 3. If player1 or player2 score = 3, declare winner!
 //  3a. Update final 'div' text with final score
 // 4. Disable further clicks
+
+// Add a little div at the very bottom of the viewport
+// that when clicked, the robots come up
 
 // BONUS:
 // track players wins over time
