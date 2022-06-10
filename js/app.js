@@ -1,15 +1,34 @@
 // spend 30 mins-1 hr planning out how this will be approached
 // create game board
 // easier way to test draw conditions - start at the middle going down: down middle, up left, down right
+
+//create turn counter! Evens = player1, Odds = player2
+let turnCounter = 1;
+let currentPlayer = 'Player One'
+console.log(currentPlayer);
+
+
 const container = document.querySelector('#container');
 const squareDivs = document.getElementsByClassName('square');
 // add event listener to all divs
 for (let i = 0; i < squareDivs.length; i++) {
     const squareDiv = document.getElementById(`div${[i]}`)
     squareDivs[i].addEventListener('click', function handleClick(e) {
-    squareDivs[i].setAttribute('style','background-color: blue');
-    })
+//       to set this to match player, we need to change it to
+//       e.target.setAttribute('class', PLACEHOLDERPLAYERVAR)
+        squareDivs[i].classList.add('playerOne')
+        turnCounter += 1;
+        // changes player!
+        if ((turnCounter % 2) ==! 0) {
+            currentPlayer = 'Player One';
+        } else {
+            currentPlayer = 'Player Two';
+        }
+        console.log((squareDivs[i]));
+        console.log(currentPlayer);
+        })
 }
+
 // set variables for all square divs
 const divOne = document.querySelector('#div1');
 const divTwo = document.querySelector('#div2');
@@ -20,11 +39,6 @@ const divSix = document.querySelector('#div6');
 const divSeven = document.querySelector('#div7');
 const divEight = document.querySelector('#div8');
 const divNine = document.querySelector('#div9');
-
-// onclick
-// divOne.addEventListener('click', () => {
-//     e.target.
-// })
 
 // on square click, we want to
 //  1. set background of div to either crow (image1) or forrester (image2) by
@@ -57,6 +71,8 @@ const divNine = document.querySelector('#div9');
 
 // on WIN condition, what do we want it to do?
 // 1. update the message that says "PLAYER ONE WIN!/PLAYER TWO WIN!"
+//  1a. Create popup depending on who wins?
+//  1b. "CROOOOOOOOOOOOOOOW" versus "FORRESTER! FORRESTER! DOCTOR CLAYTON FORRESTER!"
 // 2. Update Player 1 / Player 2 Scoreboard
 // 3. If player1 or player2 score = 3, declare winner!
 //  3a. Update final 'div' text with final score
