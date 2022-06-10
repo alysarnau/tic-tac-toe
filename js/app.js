@@ -2,12 +2,9 @@
 // create game board
 // easier way to test draw conditions - start at the middle going down: down middle, up left, down right
 
-//create turn counter! Evens = player1, Odds = player2
+//create turn counter! Odds = player1, Evens = player2
 let turnCounter = 1;
-let currentPlayer = 'Player One'
-console.log(currentPlayer);
-console.log(turnCounter)
-
+let currentPlayer = 'PLAYER ONE'
 
 const container = document.querySelector('#container');
 const squareDivs = document.getElementsByClassName('square');
@@ -16,7 +13,7 @@ for (let i = 0; i < squareDivs.length; i++) {
     const squareDiv = document.getElementById(`div${[i]}`)
     squareDivs[i].addEventListener('click', function handleClick(e) {
         // Adds appropriate image to clicked square
-        if (currentPlayer === 'Player One') {
+        if (currentPlayer === 'PLAYER ONE') {
             squareDivs[i].classList.add('playerOne')
         } else {
             squareDivs[i].classList.add('playerTwo')
@@ -24,10 +21,12 @@ for (let i = 0; i < squareDivs.length; i++) {
         turnCounter += 1;
         // changes player!
         if ((turnCounter % 2) ==! 0) {
-            currentPlayer = 'Player One';
+            currentPlayer = 'PLAYER ONE';
         } else {
-            currentPlayer = 'Player Two';
+            currentPlayer = 'PLAYER TWO';
         }
+        // change whoseTurn text
+        whoseTurn.innerHTML = `It's ${currentPlayer}'s turn!`;
         // console.log((squareDivs[i]));
         // console.log(currentPlayer);
         // console.log(turnCounter);
@@ -45,14 +44,17 @@ const divSeven = document.querySelector('#div7');
 const divEight = document.querySelector('#div8');
 const divNine = document.querySelector('#div9');
 
+// define whose-turn p
+const whoseTurn = document.querySelector('#whose-turn');
+console.log(whoseTurn);
+
 // on square click, we want to
 //  1. set background of div to either crow (image1) or forrester (image2) by
-//      change class (player1 or player2)!!! P1 DONE
+//      change class (player1 or player2)!!! DONE!
 //  2. change the "turn order" variable to either Player 1 or Player 2 DONE
-//      2a. This should also change the "player1/player2 turn" text
-//  3. change over the background image to either image1 or image2
-//  4. WE WILL NEED A "MOVETRACKER" VARIABLE
-//  5. We will need to disable further clicks
+//      2a. This should also change the "player1/player2 turn" text DONE
+//  3. WE WILL NEED A "MOVETRACKER" VARIABLE DONE
+//  4. We will need to disable further clicks
 
 // if x or o, use while loop
 
