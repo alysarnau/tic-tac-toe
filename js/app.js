@@ -4,32 +4,22 @@
 const container = document.querySelector('#container');
 const squareDivs = document.getElementsByClassName('square');
 // add event listener to all divs
-// for (let i = 0; i < squareDivs.length; i++) {
-//     squareDivs[i].addEventListener('click', function handleClick(e) {
-//         console.log(`div clicked ${e.target}`);
-//         squareDiv.setAttribute('style','background-color: blue');
-//     console.log((squareDivs[i]));
-//     })
-// }
-
-console.log(squareDivs);
+for (let i = 0; i < squareDivs.length; i++) {
+    const squareDiv = document.getElementById(`div${[i]}`)
+    squareDivs[i].addEventListener('click', function handleClick(e) {
+    squareDivs[i].setAttribute('style','background-color: blue');
+    })
+}
 // set variables for all square divs
-const divOne = document.querySelector('#id1');
-divOne.addEventListener('click', function handleClick(e) {
-    // to set this to match player, we need to change it to
-//    e.target.setAttribute('class', PLACEHOLDERPLAYERVAR)
-    e.target.setAttribute('style','background-color: blue');
-    console.log(`clicked`);
-    }
-)
-const divTwo = document.querySelector('#id2');
-const divThree = document.querySelector('#id3');
-const divFour = document.querySelector('#id4');
-const divFive = document.querySelector('#id5');
-const divSix = document.querySelector('#id6');
-const divSeven = document.querySelector('#id7');
-const divEight = document.querySelector('#id8');
-const divNine = document.querySelector('#id9');
+const divOne = document.querySelector('#div1');
+const divTwo = document.querySelector('#div2');
+const divThree = document.querySelector('#div3');
+const divFour = document.querySelector('#div4');
+const divFive = document.querySelector('#div5');
+const divSix = document.querySelector('#div6');
+const divSeven = document.querySelector('#div7');
+const divEight = document.querySelector('#div8');
+const divNine = document.querySelector('#div9');
 
 // onclick
 // divOne.addEventListener('click', () => {
