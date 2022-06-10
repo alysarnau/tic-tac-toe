@@ -1,12 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
 body {
-    font-family: 'Papyrus', 'Comic Sans MS', sans-serif;
+    font-family: 'Kdam Thmor Pro', sans-serif;
     width: 300px;
     margin: 50px auto;
+    text-align: center;
+    background-color: #FFF3B0;
+    /*background-image: url('https://opuszine.us/_assets/entries/mst3k-satellite.jpg');*/
 }
 
 h1 {
     display: flex;
-    justify-content: center;;
+    justify-content: center;
+    color: #540B0E;
 }
 
 #container {
@@ -18,7 +24,8 @@ h1 {
 .square {
     width: 100px;
     height: 100px;
-    background-color:orchid;
-    border: 2px solid black;
+    background-color: #E09F3E;
+    border: 2px solid #9E2A2B;
     box-sizing: border-box;
+
 }
