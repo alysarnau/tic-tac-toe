@@ -59,13 +59,15 @@ h3 {
 
 #robots:hover {
     background-image: url('https://external-preview.redd.it/e240rGO7gT2OZ9asccNcxqrQ1EqRvBl9pQt3nkw6_-8.png?auto=webp&s=9ce726b9fc6a1f65816a29eeae0fb4bdfec90e7e');
-
+    background-size: cover;
 }
 
 .playerOne {
     background-image: url('../img/crow.jpg');
+    background-size: cover;
 }
 
 .playerTwo {
-    background-image: url('../img/forrester.jpeg');;
+    background-image: url('../img/forrester.jpeg');
+    background-size: cover;
 }

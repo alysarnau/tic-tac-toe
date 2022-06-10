@@ -3,9 +3,25 @@
 // easier way to test draw conditions - start at the middle going down: down middle, up left, down right
 const container = document.querySelector('#container');
 const squareDivs = document.getElementsByClassName('square');
+// add event listener to all divs
+// for (let i = 0; i < squareDivs.length; i++) {
+//     squareDivs[i].addEventListener('click', function handleClick(e) {
+//         console.log(`div clicked ${e.target}`);
+//         squareDiv.setAttribute('style','background-color: blue');
+//     console.log((squareDivs[i]));
+//     })
+// }
+
 console.log(squareDivs);
 // set variables for all square divs
 const divOne = document.querySelector('#id1');
+divOne.addEventListener('click', function handleClick(e) {
+    // to set this to match player, we need to change it to
+//    e.target.setAttribute('class', PLACEHOLDERPLAYERVAR)
+    e.target.setAttribute('style','background-color: blue');
+    console.log(`clicked`);
+    }
+)
 const divTwo = document.querySelector('#id2');
 const divThree = document.querySelector('#id3');
 const divFour = document.querySelector('#id4');
@@ -15,8 +31,10 @@ const divSeven = document.querySelector('#id7');
 const divEight = document.querySelector('#id8');
 const divNine = document.querySelector('#id9');
 
-
-// reset button on click should reset inner html for container
+// onclick
+// divOne.addEventListener('click', () => {
+//     e.target.
+// })
 
 // on square click, we want to
 //  1. set background of div to either crow (image1) or forrester (image2) by
@@ -54,8 +72,7 @@ const divNine = document.querySelector('#id9');
 //  3a. Update final 'div' text with final score
 // 4. Disable further clicks
 
-// Add a little div at the very bottom of the viewport
-// on mouseover, the robots come up/slide up
+// reset button on click should reset inner html for container
 
 // BONUS:
 // track players wins over time
