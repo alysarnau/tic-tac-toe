@@ -33,7 +33,7 @@
 // 4. Disable further clicks
 
 // Add a little div at the very bottom of the viewport
-// that when clicked, the robots come up
+// on mouseover, the robots come up/slide up
 
 // BONUS:
 // track players wins over time
