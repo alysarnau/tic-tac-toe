@@ -31,6 +31,7 @@ const scoreboard = document.querySelector('#scoreboard');
 // define container and squareDivs
 const container = document.querySelector('#container');
 const squareDivs = document.getElementsByClassName('square');
+const surpriseDiv = document.getElementById('surprise');
 
 //declare game won var
 let gameFinished = false;
@@ -85,6 +86,7 @@ const alertWinner = () => {
         }
     resultPara.innerText = 'Play Again?';
     whoseTurn.innerText = `${winner} wins!`;
+    surpriseDiv.setAttribute('id','robots');
 }
 
 // add event listener to all divs

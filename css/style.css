@@ -50,15 +50,12 @@ h3 {
 
 #robots {
     position: fixed;
-    bottom: -50px;
+    bottom: 0px;
     right: 0;
-    width: 960px;
-    height: 344px;
-    transition: all 5s ease-out
-}
-
-#robots:hover {
-    background-image: url('https://external-preview.redd.it/e240rGO7gT2OZ9asccNcxqrQ1EqRvBl9pQt3nkw6_-8.png?auto=webp&s=9ce726b9fc6a1f65816a29eeae0fb4bdfec90e7e');
+    width: 1916px;
+    height: 317px;
+    transition: all 5s ease-out;
+    background-image: url('../img/robot_bottom.png');
     background-size: cover;
 }
 
