@@ -69,51 +69,67 @@ const checkWinner = () => {
     if ((div1.classList.contains('playerOne') && div2.classList.contains('playerOne')) && 
         (div2.classList.contains('playerOne') && div3.classList.contains('playerOne'))) {
         alertWinner();
+        playerOneScore += 1;
     } else if ((div4.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
         (div5.classList.contains('playerOne') && div6.classList.contains('playerOne'))) {
         alertWinner();
+        playerOneScore += 1;
     } else if ((div7.classList.contains('playerOne') && div8.classList.contains('playerOne')) && 
         (div8.classList.contains('playerOne') && div9.classList.contains('playerOne'))) {
         alertWinner();
+        playerOneScore += 1;
     } else if ((div7.classList.contains('playerOne') && div4.classList.contains('playerOne')) && 
         (div4.classList.contains('playerOne') && div1.classList.contains('playerOne'))) {
         alertWinner();  
+        playerOneScore += 1;
     } else if ((div8.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
         (div5.classList.contains('playerOne') && div2.classList.contains('playerOne'))) {
         alertWinner();  
+        playerOneScore += 1;
     } else if ((div9.classList.contains('playerOne') && div6.classList.contains('playerOne')) && 
         (div6.classList.contains('playerOne') && div3.classList.contains('playerOne'))) {
-        alertWinner();  
+        alertWinner(); 
+        playerOneScore += 1; 
     } else if ((div7.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
         (div5.classList.contains('playerOne') && div3.classList.contains('playerOne'))) {
-        alertWinner();  
+        alertWinner(); 
+        playerOneScore += 1; 
     } else if ((div9.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
         (div5.classList.contains('playerOne') && div1.classList.contains('playerOne'))) {
         alertWinner();  
+        playerOneScore += 1;
     } else if ((div1.classList.contains('playerTwo') && div2.classList.contains('playerTwo')) && 
         (div2.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) {
         alertWinner();
+        playerTwoScore += 1;
     } else if ((div4.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
         (div5.classList.contains('playerTwo') && div6.classList.contains('playerTwo'))) {
         alertWinner();
+        playerTwoScore += 1;
     } else if ((div7.classList.contains('playerTwo') && div8.classList.contains('playerTwo')) && 
         (div8.classList.contains('playerTwo') && div9.classList.contains('playerTwo'))) {
         alertWinner();
+        playerTwoScore += 1;
     } else if ((div7.classList.contains('playerTwo') && div4.classList.contains('playerTwo')) && 
         (div4.classList.contains('playerTwo') && div1.classList.contains('playerTwo'))) {
         alertWinner();  
+        playerTwoScore += 1;
     } else if ((div8.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
         (div5.classList.contains('playerTwo') && div2.classList.contains('playerTwo'))) {
-        alertWinner();  
+        alertWinner(); 
+        playerTwoScore += 1; 
     } else if ((div9.classList.contains('playerTwo') && div6.classList.contains('playerTwo')) && 
         (div6.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) {
         alertWinner();  
+        playerTwoScore += 1;
     } else if ((div7.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
         (div5.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) {
         alertWinner();  
+        playerTwoScore += 1;
     } else if ((div9.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
         (div5.classList.contains('playerTwo') && div1.classList.contains('playerTwo'))) {
         alertWinner();  
+        playerTwoScore += 1;
     }
 }
 
@@ -130,10 +146,11 @@ const alertWinner = () => {
 }
 
 // on WIN condition, what do we want it to do?
-// 1. update the message that says "PLAYER ONE WIN!/PLAYER TWO WIN!"
-//  1a. "CROOOOOOOOOOOOOOOW" versus "FORRESTER! FORRESTER! DOCTOR CLAYTON FORRESTER!"
 //  1b. play theme song? OPT OPT
 // 2. Update Player 1 / Player 2 Scoreboard
+// need to declare player scores
+let playerOneScore = 0;
+let playerTwoScore = 0;
 // 3. If player1 or player2 score = 3, declare winner!
 //  3a. Update final 'div' text with final score
 // 4. Disable further clicks
