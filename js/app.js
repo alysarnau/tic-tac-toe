@@ -29,7 +29,7 @@ const container = document.querySelector('#container');
 const squareDivs = document.getElementsByClassName('square');
 
 //declare game won var
-let gameFinished;
+let gameFinished = false;
 
 // define players
 let playerOne;
@@ -105,16 +105,16 @@ for (let i = 0; i < squareDivs.length; i++) {
     }
     checkWinner();
     checkDraw();
-    // checks to see if game is done
-    if (gameFinished ==! true) {
-        whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
-    } else {
-        turnCounter += 1;}
+    turnCounter += 1;
     // this changes the current player!
     if ((turnCounter % 2) ==! 0) {
         currentPlayer = 'PLAYER ONE';
     } else {
         currentPlayer = 'PLAYER TWO';
+    }
+    // checks to see if game is done
+    if (gameFinished === false) {
+        whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
     }
     },
     // this only lets a person click once!
