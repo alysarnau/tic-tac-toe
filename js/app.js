@@ -13,8 +13,6 @@ for (let i = 0; i < squareDivs.length; i++) {
     const squareDiv = document.getElementById(`div${[i]}`)
     squareDivs[i].addEventListener('click', function handleClick(e) {
         //first, let's test if there's already something there
-        let clickedDiv = document.getElementById(`div${[i]}`);
-        console.log(clickedDiv);
         // Adds appropriate image to clicked square
         if (currentPlayer === 'PLAYER ONE') {
             squareDivs[i].classList.add('playerOne');
@@ -32,31 +30,25 @@ for (let i = 0; i < squareDivs.length; i++) {
         }
         // change whoseTurn text
         whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
+        },
         // this only lets a person click once!
-        }, {once:true})
+        {once:true})
 }
 
 // set variables for all square divs
-const divOne = document.querySelector('#div1');
-const divTwo = document.querySelector('#div2');
-const divThree = document.querySelector('#div3');
-const divFour = document.querySelector('#div4');
-const divFive = document.querySelector('#div5');
-const divSix = document.querySelector('#div6');
-const divSeven = document.querySelector('#div7');
-const divEight = document.querySelector('#div8');
-const divNine = document.querySelector('#div9');
+// I WONT NEED THIS BC I CAN JUST SELECT WITH ID
+const div1 = document.querySelector('#div1');
+const div2 = document.querySelector('#div2');
+const div3 = document.querySelector('#div3');
+const div4 = document.querySelector('#div4');
+const div5 = document.querySelector('#div5');
+const div6 = document.querySelector('#div6');
+const div7 = document.querySelector('#div7');
+const div8 = document.querySelector('#div8');
+const div9 = document.querySelector('#div9');
 
 // define whose-turn p
 const whoseTurn = document.querySelector('#whose-turn');
-
-// on square click, we want to
-//  1. set background of div to either crow (image1) or forrester (image2) by
-//      change class (player1 or player2)!!! DONE!
-//  2. change the "turn order" variable to either Player 1 or Player 2 DONE
-//      2a. This should also change the "player1/player2 turn" text DONE
-//  3. WE WILL NEED A "MOVETRACKER" VARIABLE DONE
-//  4. We will need to disable further clicks
 
 // if x or o, use while loop
 
@@ -82,13 +74,35 @@ const whoseTurn = document.querySelector('#whose-turn');
 // 1. update the message that says "PLAYER ONE WIN!/PLAYER TWO WIN!"
 //  1a. Create popup depending on who wins?
 //  1b. "CROOOOOOOOOOOOOOOW" versus "FORRESTER! FORRESTER! DOCTOR CLAYTON FORRESTER!"
+//  1c. play theme song?
 // 2. Update Player 1 / Player 2 Scoreboard
 // 3. If player1 or player2 score = 3, declare winner!
 //  3a. Update final 'div' text with final score
 // 4. Disable further clicks
 
 // reset button on click should reset inner html for container
-
+const resetButton = document.querySelector('#reset-button');
+resetButton.addEventListener('click', () => {
+    console.log(resetButton);
+    location.reload();
+    // being a bit of a b-word now, to reassess tomorrow
+    // //create function reset() that removes player-one & player-two class from ALL divs
+    // const squareDivs = document.getElementsByClassName('square');
+    // console.log(squareDivs);
+    // // this deletes all existing containers
+    // while (container.firstChild) {
+    //     container.firstChild.remove();
+    }
+    //this will recreate new containers
+    // for (let i = 1; i < 10; i++) {
+    //     const div = document.createElement('div');
+    //     div.setAttribute('id',`div${i}`);
+    //     div.setAttribute('class', 'square');
+    //     container.appendChild(div);
+    // }
+    // addEventListener('click', function handleClick();
+    // }
+)
 // BONUS:
 // track players wins over time
 // add simple AI that has the computer pick an random empty square
