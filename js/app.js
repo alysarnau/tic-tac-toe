@@ -66,8 +66,54 @@ for (let i = 0; i < squareDivs.length; i++) {
 // we can use classes to check - if 1,2,3 are the same class, then they win!
 const checkWinner = () => {
     // win condition
-    if ((div1.classList.contains('playerOne') && div2.classList.contains('playerOne')) && (div2.classList.contains('playerOne') && div3.classList.contains('playerOne'))) {
+    if ((div1.classList.contains('playerOne') && div2.classList.contains('playerOne')) && 
+        (div2.classList.contains('playerOne') && div3.classList.contains('playerOne'))) {
         alertWinner();
+    } else if ((div4.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
+        (div5.classList.contains('playerOne') && div6.classList.contains('playerOne'))) {
+        alertWinner();
+    } else if ((div7.classList.contains('playerOne') && div8.classList.contains('playerOne')) && 
+        (div8.classList.contains('playerOne') && div9.classList.contains('playerOne'))) {
+        alertWinner();
+    } else if ((div7.classList.contains('playerOne') && div4.classList.contains('playerOne')) && 
+        (div4.classList.contains('playerOne') && div1.classList.contains('playerOne'))) {
+        alertWinner();  
+    } else if ((div8.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
+        (div5.classList.contains('playerOne') && div2.classList.contains('playerOne'))) {
+        alertWinner();  
+    } else if ((div9.classList.contains('playerOne') && div6.classList.contains('playerOne')) && 
+        (div6.classList.contains('playerOne') && div3.classList.contains('playerOne'))) {
+        alertWinner();  
+    } else if ((div7.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
+        (div5.classList.contains('playerOne') && div3.classList.contains('playerOne'))) {
+        alertWinner();  
+    } else if ((div9.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
+        (div5.classList.contains('playerOne') && div1.classList.contains('playerOne'))) {
+        alertWinner();  
+    } else if ((div1.classList.contains('playerTwo') && div2.classList.contains('playerTwo')) && 
+        (div2.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) {
+        alertWinner();
+    } else if ((div4.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
+        (div5.classList.contains('playerTwo') && div6.classList.contains('playerTwo'))) {
+        alertWinner();
+    } else if ((div7.classList.contains('playerTwo') && div8.classList.contains('playerTwo')) && 
+        (div8.classList.contains('playerTwo') && div9.classList.contains('playerTwo'))) {
+        alertWinner();
+    } else if ((div7.classList.contains('playerTwo') && div4.classList.contains('playerTwo')) && 
+        (div4.classList.contains('playerTwo') && div1.classList.contains('playerTwo'))) {
+        alertWinner();  
+    } else if ((div8.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
+        (div5.classList.contains('playerTwo') && div2.classList.contains('playerTwo'))) {
+        alertWinner();  
+    } else if ((div9.classList.contains('playerTwo') && div6.classList.contains('playerTwo')) && 
+        (div6.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) {
+        alertWinner();  
+    } else if ((div7.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
+        (div5.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) {
+        alertWinner();  
+    } else if ((div9.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
+        (div5.classList.contains('playerTwo') && div1.classList.contains('playerTwo'))) {
+        alertWinner();  
     }
 }
 
