@@ -1,9 +1,14 @@
-// KNOWN BUGS:
-// scoreboard not working as intended
+// BUG
+// NEED TO DISABLE ALL CLICKS ON BOARD AFTER WIN
+// removeEventHandler?
+
 
 // Figure out how to use reset button without refreshing whole page
 // Stop game and declare winner once either playerScore = 3
 // Create simple function that chooses and selects empty square at random
+    // CREATE FUNCTION
+    // CREATE BUTTON 
+    // LINK FUNCTION TO BUTTON
 // Add time delay bw your turn and computer turn
 // create a mini-max algo SUPER BONUS
     // https://towardsdatascience.com/how-a-chess-playing-computer-thinks-about-its-next-move-8f028bd0e7b1
@@ -72,13 +77,7 @@ const checkWinner = () => {
     } 
 }
 
-
-// 4. Disable further clicks
-    // for (let i = 0; i < squareDivs.length; i++) {
-    //     squareDivs[i].classList.add(null);
-    // }
-
-//create function to alert winner and update result p
+//create function to alert winner and update result text
 const alertWinner = () => {
     if (currentPlayer === 'PLAYER TWO') {
         alert(`Forrester! Forrester! Doctor Clayton Forrester!`);
@@ -92,38 +91,38 @@ const alertWinner = () => {
 // add event listener to all divs
 for (let i = 0; i < squareDivs.length; i++) {
     squareDivs[i].addEventListener('click', function handleClick(e) {
-        //first, let's test if there's already something there
-
+        //first, let's test if it's already been clicked!
+        if (squareDivs[i].classList.contains('clicked')) {
+        console.log('clicked');
+    } else {
         // Adds appropriate image to clicked square
-    squareDivs[i].classList.add('clicked');
-    if (currentPlayer === 'PLAYER ONE') {
-        squareDivs[i].classList.add('playerOne');
-        squareDivs[i].innerHTML = `<span>${currentPlayer}</span>`;
-        // problem with this is that it doesn't stop turncounter
-    } else {
-        squareDivs[i].classList.add('playerTwo');
-        squareDivs[i].innerHTML = `<span>${currentPlayer}</span>`;
+        squareDivs[i].classList.add('clicked');
+        if (currentPlayer === 'PLAYER ONE') {
+            squareDivs[i].classList.add('playerOne');
+            squareDivs[i].innerHTML = `<span>${currentPlayer}</span>`;
+        } else {
+            squareDivs[i].classList.add('playerTwo');
+            squareDivs[i].innerHTML = `<span>${currentPlayer}</span>`;
+        }
+        checkDraw();
+        checkWinner();
+        turnCounter += 1;
+        // this changes the current player!
+        if ((turnCounter % 2) ==! 0) {
+            currentPlayer = 'PLAYER ONE';
+        } else {
+            currentPlayer = 'PLAYER TWO';
+        }
+        // checks to see if game is done
+        if (gameFinished === false) {
+            whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
+        }
     }
-    checkDraw();
-    checkWinner();
-    turnCounter += 1;
-    // this changes the current player!
-    if ((turnCounter % 2) ==! 0) {
-        currentPlayer = 'PLAYER ONE';
-    } else {
-        currentPlayer = 'PLAYER TWO';
-    }
-    // checks to see if game is done
-    if (gameFinished === false) {
-        whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
-    }
-    },
-    // this only lets a person click once!
-    {once:true})
+    })
 }
 
+
 // Detect Draw function
-// create variable for clicked divs
 const clickedDivs = document.getElementsByClassName('clicked');
 const checkDraw = () => {
     if (squareDivs.length === clickedDivs.length) {
@@ -134,37 +133,41 @@ const checkDraw = () => {
     }
 }   
 
+if (gameFinished === true) {
+    for (let i = 0; i < squareDivs.length; i++) {
+        squareDivs[i].removeEventListener('click', handleClick, true)
+};
+}
+
 // reset button semiDONE
 const resetButton = document.querySelector('#reset-button');
 resetButton.addEventListener('click', () => {
     console.log(resetButton);
     location.reload();
-    // being a bit of a b-word now, to reassess tomorrow
-    // //create function reset() that removes player-one & player-two class from ALL divs
-    // const squareDivs = document.getElementsByClassName('square');
-    // console.log(squareDivs);
-    // // this deletes all existing containers
-    // while (container.firstChild) {
-    //     container.firstChild.remove();
     }
-    //this will recreate new containers
-    // for (let i = 1; i < 10; i++) {
-    //     const div = document.createElement('div');
-    //     div.setAttribute('id',`div${i}`);
-    //     div.setAttribute('class', 'square');
-    //     container.appendChild(div);
-    // }
-    // addEventListener('click', function handleClick();
-    // }
 )
-
-// this should removes all divs
-// AND THEN recreate them
-// and add square class to them
-const removeClasses = () => {
+// functionality for reset button!
+// 1. this should removes all divs
+const removeDivs = () => {
     while (container.firstChild) {
         container.firstChild.remove();
     }
 }
+// 2. AND THEN recreate them
+const createDivs = () => {
+    for (let i = 1; i < 10; i++) {
+        const div = document.createElement('div');
+        div.setAttribute('id',`div${i}`);
+        //sets Class
+        div.setAttribute('class', 'square');
+        // appends to container
+        container.appendChild(div);
+    }
+}
 
+// 3. problem to solve: click event - the "one time only" thing is messing with us!!
 
+//POTENTIAL SOLUTION Disable further clicks
+    // for (let i = 0; i < squareDivs.length; i++) {
+    //     squareDivs[i].classList.add(null);
+    // }
