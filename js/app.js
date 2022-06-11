@@ -28,8 +28,16 @@ const scoreboard = document.querySelector('#scoreboard');
 const container = document.querySelector('#container');
 const squareDivs = document.getElementsByClassName('square');
 
+//declare game won var
+let gameFinished;
+
+// define players
+let playerOne;
+let playerTwo;
+
 // create winner variable
 let winner;
+
 // create checkwinner function
 const checkWinner = () => {
     //win conditions
@@ -42,7 +50,9 @@ const checkWinner = () => {
         ((div7.innerHTML === div5.innerHTML) && (div5.innerHTML === div3.innerHTML)) ||
         ((div9.innerHTML === div5.innerHTML) && (div5.innerHTML === div1.innerHTML)))
     {
+        console.log(winner);
         winner = currentPlayer;
+        //scoreboard is not working as intended
         if (winner === playerOne) {
             playerOneScore += 1;
         } else {
@@ -50,6 +60,7 @@ const checkWinner = () => {
         }
 
 //        need to increase winner's score by one
+        gameFinished = true;
         alertWinner();
         console.log (`${winner} wins`);
     } else {
@@ -57,8 +68,6 @@ const checkWinner = () => {
     } 
 }
 
-// on WIN condition, what do we want it to do?
-// 2. Update Player 1 / Player 2 Scoreboard
 // need to declare player scores
 let playerOneScore = 0;
 let playerTwoScore = 0;
@@ -67,7 +76,6 @@ let playerTwoScore = 0;
     //     squareDivs[i].classList.add(null);
     // }
 
-console.log(scoreboard);
 //create function to alert winner and update result p
 const alertWinner = () => {
     if (currentPlayer === 'PLAYER TWO') {
@@ -82,33 +90,35 @@ const alertWinner = () => {
 
 // add event listener to all divs
 for (let i = 0; i < squareDivs.length; i++) {
-    const squareDiv = document.getElementById(`div${[i]}`)
     squareDivs[i].addEventListener('click', function handleClick(e) {
         //first, let's test if there's already something there
 
         // Adds appropriate image to clicked square
-        squareDivs[i].classList.add('clicked');
-        if (currentPlayer === 'PLAYER ONE') {
-            squareDivs[i].classList.add('playerOne');
-            squareDivs[i].innerHTML = `<span>${currentPlayer}</span>`;
-            // problem with this is that it doesn't stop turncounter
-        } else {
-            squareDivs[i].classList.add('playerTwo');
-            squareDivs[i].innerHTML = `<span>${currentPlayer}</span>`;
-        }
+    squareDivs[i].classList.add('clicked');
+    if (currentPlayer === 'PLAYER ONE') {
+        squareDivs[i].classList.add('playerOne');
+        squareDivs[i].innerHTML = `<span>${currentPlayer}</span>`;
+        // problem with this is that it doesn't stop turncounter
+    } else {
+        squareDivs[i].classList.add('playerTwo');
+        squareDivs[i].innerHTML = `<span>${currentPlayer}</span>`;
+    }
+    checkWinner();
+    checkDraw();
+    // checks to see if game is done
+    if (gameFinished ==! true) {
         whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
-        checkWinner();
-        checkDraw();
-        turnCounter += 1;
-        // this changes the current player!
-        if ((turnCounter % 2) ==! 0) {
-            currentPlayer = 'PLAYER ONE';
-        } else {
-            currentPlayer = 'PLAYER TWO';
-        }
-        },
-        // this only lets a person click once!
-        {once:true})
+    } else {
+        turnCounter += 1;}
+    // this changes the current player!
+    if ((turnCounter % 2) ==! 0) {
+        currentPlayer = 'PLAYER ONE';
+    } else {
+        currentPlayer = 'PLAYER TWO';
+    }
+    },
+    // this only lets a person click once!
+    {once:true})
 }
 
 // Detect Draw function
@@ -144,10 +154,6 @@ resetButton.addEventListener('click', () => {
     // addEventListener('click', function handleClick();
     // }
 )
-
-
-
-
 
 
 
