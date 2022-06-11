@@ -80,3 +80,6 @@ h3 {
     pointer-events: null;
 }
 
+span {
+    visibility: hidden;
+}

@@ -1,5 +1,6 @@
 // 22:33 STATUS - ALMOST DONE!
 // track players wins over time [DONE]
+// update! WIN STATE NOT TRIGGERING!
 // Figure out how to use reset button without refreshing whole page
 // Stop game and declare winner once either playerScore = 3
 // Create simple function that chooses and selects empty square at random
@@ -33,48 +34,53 @@ const squareDivs = document.getElementsByClassName('square');
 // create winner variable
 let winner;
 const checkWinner = () => {
-    // win condition
-    if (((div1.classList.contains('playerOne') && div2.classList.contains('playerOne')) && 
-            (div2.classList.contains('playerOne') && div3.classList.contains('playerOne'))) ||
-        ((div4.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
-            (div5.classList.contains('playerOne') && div6.classList.contains('playerOne'))) || 
-        ((div7.classList.contains('playerOne') && div8.classList.contains('playerOne')) && 
-            (div8.classList.contains('playerOne') && div9.classList.contains('playerOne'))) ||
-        ((div7.classList.contains('playerOne') && div4.classList.contains('playerOne')) && 
-            (div4.classList.contains('playerOne') && div1.classList.contains('playerOne'))) ||
-        ((div8.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
-            (div5.classList.contains('playerOne') && div2.classList.contains('playerOne'))) ||
-        ((div9.classList.contains('playerOne') && div6.classList.contains('playerOne')) && 
-            (div6.classList.contains('playerOne') && div3.classList.contains('playerOne'))) ||
-        ((div7.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
-            (div5.classList.contains('playerOne') && div3.classList.contains('playerOne'))) ||
-        ((div9.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
-            (div5.classList.contains('playerOne') && div1.classList.contains('playerOne')))
-        ) {
-            winner = `PLAYER ONE`;
-            playerOneScore += 1;
-            alertWinner();
-    } else if (((div1.classList.contains('playerTwo') && div2.classList.contains('playerTwo')) && 
-            (div2.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) ||
-        ((div4.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
-            (div5.classList.contains('playerTwo') && div6.classList.contains('playerTwo'))) || 
-        ((div7.classList.contains('playerTwo') && div8.classList.contains('playerTwo')) && 
-            (div8.classList.contains('playerTwo') && div9.classList.contains('playerTwo'))) ||
-        ((div7.classList.contains('playerTwo') && div4.classList.contains('playerTwo')) && 
-            (div4.classList.contains('playerTwo') && div1.classList.contains('playerTwo'))) ||
-        ((div8.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
-            (div5.classList.contains('playerTwo') && div2.classList.contains('playerTwo'))) ||
-        ((div9.classList.contains('playerTwo') && div6.classList.contains('playerTwo')) && 
-            (div6.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) ||
-        ((div7.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
-            (div5.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) ||
-        ((div9.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
-            (div5.classList.contains('playerTwo') && div1.classList.contains('playerTwo')))
-        ) {
-            winner = `PLAYER TWO`;
-            playerTwoScore += 1;
-            alertWinner();
+    //IS THERE AN EASIER WAY
+    if ((div1.innerHTML === div2.innerHTML) && (div2.innerHTML === div3.innerHTML)) {
+        winner = currentPlayer;
+        console.log (`${currentPlayer} wins`);
     }
+    // // win condition
+    // if (((div1.classList.contains('playerOne') && div2.classList.contains('playerOne')) && 
+    //         (div2.classList.contains('playerOne') && div3.classList.contains('playerOne'))) ||
+    //     ((div4.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
+    //         (div5.classList.contains('playerOne') && div6.classList.contains('playerOne'))) || 
+    //     ((div7.classList.contains('playerOne') && div8.classList.contains('playerOne')) && 
+    //         (div8.classList.contains('playerOne') && div9.classList.contains('playerOne'))) ||
+    //     ((div7.classList.contains('playerOne') && div4.classList.contains('playerOne')) && 
+    //         (div4.classList.contains('playerOne') && div1.classList.contains('playerOne'))) ||
+    //     ((div8.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
+    //         (div5.classList.contains('playerOne') && div2.classList.contains('playerOne'))) ||
+    //     ((div9.classList.contains('playerOne') && div6.classList.contains('playerOne')) && 
+    //         (div6.classList.contains('playerOne') && div3.classList.contains('playerOne'))) ||
+    //     ((div7.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
+    //         (div5.classList.contains('playerOne') && div3.classList.contains('playerOne'))) ||
+    //     ((div9.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
+    //         (div5.classList.contains('playerOne') && div1.classList.contains('playerOne')))
+    //     ) {
+    //         winner = `PLAYER ONE`;
+    //         playerOneScore += 1;
+    //         alertWinner();
+    // } else if (((div1.classList.contains('playerTwo') && div2.classList.contains('playerTwo')) && 
+    //         (div2.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) ||
+    //     ((div4.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
+    //         (div5.classList.contains('playerTwo') && div6.classList.contains('playerTwo'))) || 
+    //     ((div7.classList.contains('playerTwo') && div8.classList.contains('playerTwo')) && 
+    //         (div8.classList.contains('playerTwo') && div9.classList.contains('playerTwo'))) ||
+    //     ((div7.classList.contains('playerTwo') && div4.classList.contains('playerTwo')) && 
+    //         (div4.classList.contains('playerTwo') && div1.classList.contains('playerTwo'))) ||
+    //     ((div8.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
+    //         (div5.classList.contains('playerTwo') && div2.classList.contains('playerTwo'))) ||
+    //     ((div9.classList.contains('playerTwo') && div6.classList.contains('playerTwo')) && 
+    //         (div6.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) ||
+    //     ((div7.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
+    //         (div5.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) ||
+    //     ((div9.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
+    //         (div5.classList.contains('playerTwo') && div1.classList.contains('playerTwo')))
+    //     ) {
+    //         winner = `PLAYER TWO`;
+    //         playerTwoScore += 1;
+    //         alertWinner();
+    // }
 }
 
 // on WIN condition, what do we want it to do?
@@ -97,10 +103,14 @@ for (let i = 0; i < squareDivs.length; i++) {
         squareDivs[i].classList.add('clicked');
         if (currentPlayer === 'PLAYER ONE') {
             squareDivs[i].classList.add('playerOne');
+            squareDivs[i].innerHTML = `<span>${currentPlayer}</span>`;
             // problem with this is that it doesn't stop turncounter
         } else {
             squareDivs[i].classList.add('playerTwo');
+            squareDivs[i].innerHTML = `<span>${currentPlayer}</span>`;
         }
+        checkWinner();
+        checkDraw();
         turnCounter += 1;
         //turnCounter += 1;
         // this changes the current player!
@@ -112,8 +122,6 @@ for (let i = 0; i < squareDivs.length; i++) {
         // change whoseTurn text
         whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
         // check for WIN CONDITION
-        checkWinner();
-        checkDraw();
         },
         // this only lets a person click once!
         {once:true})
