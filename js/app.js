@@ -58,7 +58,6 @@ const checkWinner = () => {
         } else {
             playerTwoScore += 1;
         }
-
 //        need to increase winner's score by one
         gameFinished = true;
         alertWinner();
@@ -103,8 +102,8 @@ for (let i = 0; i < squareDivs.length; i++) {
         squareDivs[i].classList.add('playerTwo');
         squareDivs[i].innerHTML = `<span>${currentPlayer}</span>`;
     }
-    checkWinner();
     checkDraw();
+    checkWinner();
     turnCounter += 1;
     // this changes the current player!
     if ((turnCounter % 2) ==! 0) {
@@ -127,6 +126,7 @@ const clickedDivs = document.getElementsByClassName('clicked');
 const checkDraw = () => {
     if (squareDivs.length === clickedDivs.length) {
     console.log('tis a draw');
+    gameFinished = true;
     whoseTurn.innerText = `No one wins. I hope you're happy.`;
     resultPara.innerText = 'You better restart and try harder, pal.'
 }
