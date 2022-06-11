@@ -83,3 +83,7 @@ h3 {
 span {
     visibility: hidden;
 }
+
+#crow {
+    font-size: 32px;
+}
