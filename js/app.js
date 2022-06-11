@@ -1,11 +1,8 @@
-// 22:33 STATUS - ALMOST DONE!
-// track players wins over time [DONE]
-// update! WIN STATE NOT TRIGGERING!
 // Figure out how to use reset button without refreshing whole page
 // Stop game and declare winner once either playerScore = 3
 // Create simple function that chooses and selects empty square at random
 // Add time delay bw your turn and computer turn
-// create a mini-max algo
+// create a mini-max algo SUPER BONUS
     // https://towardsdatascience.com/how-a-chess-playing-computer-thinks-about-its-next-move-8f028bd0e7b1
 
 //creates turn counter!
@@ -38,7 +35,16 @@ const checkWinner = () => {
     if ((div1.innerHTML === div2.innerHTML) && (div2.innerHTML === div3.innerHTML)) {
         winner = currentPlayer;
         console.log (`${currentPlayer} wins`);
-    }
+    } else if ((div4.innerHTML === div5.innerHTML) && (div5.innerHTML === div6.innerHTML)) {
+        winner = currentPlayer;
+        console.log (`${currentPlayer} wins`);
+    } 
+
+
+
+
+
+
     // // win condition
     // if (((div1.classList.contains('playerOne') && div2.classList.contains('playerOne')) && 
     //         (div2.classList.contains('playerOne') && div3.classList.contains('playerOne'))) ||
