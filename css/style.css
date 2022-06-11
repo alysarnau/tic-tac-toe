@@ -18,7 +18,7 @@ h1 {
 #container {
     width: 350px;
     display: flex;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
 }
 
 .square {
@@ -77,7 +77,10 @@ h3 {
 }
 
 .null {
-    pointer-events: null;
+    pointer-events: none;
+    width: 350px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 span {

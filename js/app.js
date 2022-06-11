@@ -1,9 +1,5 @@
-// BUG
-// NEED TO DISABLE ALL CLICKS ON BOARD AFTER WIN
-// removeEventHandler?
+// reset button not working
 
-
-// Figure out how to use reset button without refreshing whole page
 // Stop game and declare winner once either playerScore = 3
 // Create simple function that chooses and selects empty square at random
     // CREATE FUNCTION
@@ -49,6 +45,9 @@ let playerTwoScore = 0;
 // create winner variable
 let winner;
 
+// this adds clickHandling to all divs
+addClickHandling()
+
 // create checkwinner function
 const checkWinner = () => {
     //win conditions
@@ -89,38 +88,43 @@ const alertWinner = () => {
 }
 
 // add event listener to all divs
-for (let i = 0; i < squareDivs.length; i++) {
-    squareDivs[i].addEventListener('click', function handleClick(e) {
-        //first, let's test if it's already been clicked!
-        if (squareDivs[i].classList.contains('clicked')) {
-        console.log('clicked');
-    } else {
-        // Adds appropriate image to clicked square
-        squareDivs[i].classList.add('clicked');
-        if (currentPlayer === 'PLAYER ONE') {
-            squareDivs[i].classList.add('playerOne');
-            squareDivs[i].innerHTML = `<span>${currentPlayer}</span>`;
-        } else {
-            squareDivs[i].classList.add('playerTwo');
-            squareDivs[i].innerHTML = `<span>${currentPlayer}</span>`;
-        }
-        checkDraw();
-        checkWinner();
-        turnCounter += 1;
-        // this changes the current player!
-        if ((turnCounter % 2) ==! 0) {
-            currentPlayer = 'PLAYER ONE';
-        } else {
-            currentPlayer = 'PLAYER TWO';
-        }
-        // checks to see if game is done
-        if (gameFinished === false) {
-            whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
-        }
+// define as function to call again if needed
+function addClickHandling() {
+    for (let i = 0; i < squareDivs.length; i++) {
+        squareDivs[i].addEventListener('click', handleClick)
     }
-    })
 }
 
+function handleClick(e) {
+    //first, let's test if it's already been clicked!
+    if (e.target.classList.contains('clicked')) {
+    console.log('already clicked');
+} else {
+    // Adds appropriate image to clicked square
+    e.target.classList.add('clicked');
+    if (currentPlayer === 'PLAYER ONE') {
+        e.target.classList.add('playerOne');
+        e.target.innerHTML = `<span>${currentPlayer}</span>`;
+    } else {
+        e.target.classList.add('playerTwo');
+        e.target.innerHTML = `<span>${currentPlayer}</span>`;
+    }
+    checkDraw();
+    checkWinner();
+    checkIfFinished();
+    turnCounter += 1;
+    // this changes the current player!
+    if ((turnCounter % 2) ==! 0) {
+        currentPlayer = 'PLAYER ONE';
+    } else {
+        currentPlayer = 'PLAYER TWO';
+    }
+    // checks to see if game is done
+    if (gameFinished === false) {
+        whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
+    }
+}
+}
 
 // Detect Draw function
 const clickedDivs = document.getElementsByClassName('clicked');
@@ -133,27 +137,26 @@ const checkDraw = () => {
     }
 }   
 
-if (gameFinished === true) {
-    for (let i = 0; i < squareDivs.length; i++) {
-        squareDivs[i].removeEventListener('click', handleClick, true)
-};
-}
 
 // reset button semiDONE
 const resetButton = document.querySelector('#reset-button');
 resetButton.addEventListener('click', () => {
     console.log(resetButton);
     location.reload();
+    // these functions will reset things
+    // resetting is working but it's NOT checking for win state!
+    // resetDivs()
+    // resetGameState();
+    // addClickHandling();
     }
 )
-// functionality for reset button!
-// 1. this should removes all divs
+// reset functionality
 const removeDivs = () => {
     while (container.firstChild) {
         container.firstChild.remove();
     }
 }
-// 2. AND THEN recreate them
+
 const createDivs = () => {
     for (let i = 1; i < 10; i++) {
         const div = document.createElement('div');
@@ -161,13 +164,39 @@ const createDivs = () => {
         //sets Class
         div.setAttribute('class', 'square');
         // appends to container
+        div.innerHTML = `${i}`;
         container.appendChild(div);
+        addClickHandling()
     }
 }
 
-// 3. problem to solve: click event - the "one time only" thing is messing with us!!
+const resetText = () => {
+    resultPara.innerText = '';
+    whoseTurn.innerHTML = `${currentPlayer}'s turn!`
+}
 
-//POTENTIAL SOLUTION Disable further clicks
-    // for (let i = 0; i < squareDivs.length; i++) {
-    //     squareDivs[i].classList.add(null);
-    // }
+const resetGameState = () => {
+    gameFinished = false;
+    currentPlayer = 'PLAYER ONE';
+    turnCounter = 1;
+}
+
+//it's adding it, but it stinks
+function checkIfFinished () {
+    if (gameFinished === true) {
+        console.log(gameFinished);
+        // add 'clicked' class to all empty divs
+        // this will stop further stuff from happening!!!
+        for (let i = 0; i < squareDivs.length; i++) {
+            if (!(squareDivs[i]).classList.contains('clicked')) {
+                squareDivs[i].classList.add('clicked');    
+            }
+        }
+    } else {
+        console.log(`Game not yet finished!`);
+    };
+}
+
+function resetDivs() {
+container.innerHTML = '<div class="square" id="div1"><span>1</span></div><div class="square"id="div2"><span>2</span></div><div class="square"id="div3"><span>3</span></div><div class="square"id="div4"><span>4</span></div><div class="square"id="div5"><span>5</span></div><div class="square"id="div6"><span>6</span></div><div class="square"id="div7"><span>7</span></div><div class="square"id="div8"><span>8</span></div><div class="square"id="div9"><span>9</span>';
+}
