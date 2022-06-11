@@ -213,4 +213,3 @@ function chooseRandom() {
     return unclickedSelection;
 }
 
-console.log(chooseRandom());
