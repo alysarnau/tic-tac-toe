@@ -3,16 +3,17 @@
 body {
     font-family: 'Kdam Thmor Pro', sans-serif;
     width: 300px;
-    margin: 150px auto;
+    margin: 100px auto;
     text-align: center;
     background-color: #FFF3B0;
-    /*background-image: url('https://opuszine.us/_assets/entries/mst3k-satellite.jpg');*/
+    background-image: url('../img/starbg.png');
+    background-size: cover;
+    color: #FFF3B0;
 }
 
 h1 {
     display: flex;
     justify-content: center;
-    color: #540B0E;
 }
 
 #container {
@@ -40,7 +41,7 @@ button {
 }
 
 button:hover {
-    background-color: #335C67;
+    background-color: #9E2A2B;
     color: white;
 }
 
