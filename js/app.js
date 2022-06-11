@@ -1,13 +1,25 @@
-// spend 30 mins-1 hr planning out how this will be approached
-// create game board
-// easier way to test draw conditions - start at the middle going down: down middle, up left, down right
-
 //create turn counter! Odds = player1, Evens = player2
 let turnCounter = 1;
 let currentPlayer = 'PLAYER ONE'
 
+// set variables for all square divs
+const div1 = document.querySelector('#div1');
+const div2 = document.querySelector('#div2');
+const div3 = document.querySelector('#div3');
+const div4 = document.querySelector('#div4');
+const div5 = document.querySelector('#div5');
+const div6 = document.querySelector('#div6');
+const div7 = document.querySelector('#div7');
+const div8 = document.querySelector('#div8');
+const div9 = document.querySelector('#div9');
+
+// define whose-turn p
+const whoseTurn = document.querySelector('#whose-turn');
+const resultPara = document.querySelector('#win-lose');
+// define container and squareDivs
 const container = document.querySelector('#container');
 const squareDivs = document.getElementsByClassName('square');
+
 // add event listener to all divs
 for (let i = 0; i < squareDivs.length; i++) {
     const squareDiv = document.getElementById(`div${[i]}`)
@@ -30,27 +42,14 @@ for (let i = 0; i < squareDivs.length; i++) {
         }
         // change whoseTurn text
         whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
+        // check for WIN CONDITION
+        checkWinner();
         },
         // this only lets a person click once!
         {once:true})
 }
 
-// set variables for all square divs
-// I WONT NEED THIS BC I CAN JUST SELECT WITH ID
-const div1 = document.querySelector('#div1');
-const div2 = document.querySelector('#div2');
-const div3 = document.querySelector('#div3');
-const div4 = document.querySelector('#div4');
-const div5 = document.querySelector('#div5');
-const div6 = document.querySelector('#div6');
-const div7 = document.querySelector('#div7');
-const div8 = document.querySelector('#div8');
-const div9 = document.querySelector('#div9');
-
-// define whose-turn p
-const whoseTurn = document.querySelector('#whose-turn');
-
-// if x or o, use while loop
+// easier way to test draw conditions - start at the middle going down: down middle, up left, down right
 
 // we want to evaluate a win condition after each turn
 // what does a win condition look like? 8 win conditions
@@ -65,22 +64,38 @@ const whoseTurn = document.querySelector('#whose-turn');
 //  9,5,1
 // can use loop to check! (.square[i])
 // we can use classes to check - if 1,2,3 are the same class, then they win!
-// const checkWinner = () => {
-//     // win condition
-//     if ()
-// }
+const checkWinner = () => {
+    // win condition
+    if ((div1.classList.contains('playerOne') && div2.classList.contains('playerOne')) && (div2.classList.contains('playerOne') && div3.classList.contains('playerOne'))) {
+        alertWinner();
+    }
+}
+
+//create function to alert winner and update result p
+const alertWinner = () => {
+    if (currentPlayer === 'PLAYER ONE') {
+        alert(`Forrester! Forrester! Doctor Clayton Forrester!`);
+        resultPara.innerText = `PLAYER TWO wins!`;
+        } else {
+        alert(`CROOOOOOOOOOOOOOOOOOOOOW!`)  
+        resultPara.innerText = `PLAYER ONE wins!`;
+        }
+    whoseTurn.innerText = 'Play Again?';
+}
 
 // on WIN condition, what do we want it to do?
 // 1. update the message that says "PLAYER ONE WIN!/PLAYER TWO WIN!"
-//  1a. Create popup depending on who wins?
-//  1b. "CROOOOOOOOOOOOOOOW" versus "FORRESTER! FORRESTER! DOCTOR CLAYTON FORRESTER!"
-//  1c. play theme song?
+//  1a. "CROOOOOOOOOOOOOOOW" versus "FORRESTER! FORRESTER! DOCTOR CLAYTON FORRESTER!"
+//  1b. play theme song? OPT OPT
 // 2. Update Player 1 / Player 2 Scoreboard
 // 3. If player1 or player2 score = 3, declare winner!
 //  3a. Update final 'div' text with final score
 // 4. Disable further clicks
+    // for (let i = 0; i < squareDivs.length; i++) {
+    //     squareDivs[i].classList.add(null);
+    // }
 
-// reset button on click should reset inner html for container
+// reset button DONE
 const resetButton = document.querySelector('#reset-button');
 resetButton.addEventListener('click', () => {
     console.log(resetButton);
@@ -103,12 +118,19 @@ resetButton.addEventListener('click', () => {
     // addEventListener('click', function handleClick();
     // }
 )
+
+
+
+
+
+
+
 // BONUS:
+// implement reset button without reloading whole page
 // track players wins over time
 // add simple AI that has the computer pick an random empty square
 // Make your computer seem more human by adding a short time delay between your turn and the computer's turn.
 
 // SUPER DUPER BONUS
 // Add an AI that can beat you every time with the mini-max algorithm.
-
 

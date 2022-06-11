@@ -75,3 +75,7 @@ h3 {
 #whose-turn {
     font-size: 28px;
 }
+
+.null {
+    pointer-events: null;
+}
