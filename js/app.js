@@ -1,3 +1,6 @@
+// KNOWN BUGS:
+// scoreboard not working as intended
+
 // Figure out how to use reset button without refreshing whole page
 // Stop game and declare winner once either playerScore = 3
 // Create simple function that chooses and selects empty square at random
@@ -34,6 +37,9 @@ let gameFinished = false;
 // define players
 let playerOne;
 let playerTwo;
+// need to declare player scores
+let playerOneScore = 0;
+let playerTwoScore = 0;
 
 // create winner variable
 let winner;
@@ -50,26 +56,23 @@ const checkWinner = () => {
         ((div7.innerHTML === div5.innerHTML) && (div5.innerHTML === div3.innerHTML)) ||
         ((div9.innerHTML === div5.innerHTML) && (div5.innerHTML === div1.innerHTML)))
     {
-        console.log(winner);
         winner = currentPlayer;
-        //scoreboard is not working as intended
-        if (winner === playerOne) {
+        console.log(winner);
+        gameFinished = true;
+        alertWinner();
+        console.log (`${winner} wins`);
+        if (winner === `PLAYER ONE`) {
             playerOneScore += 1;
         } else {
             playerTwoScore += 1;
         }
-//        need to increase winner's score by one
-        gameFinished = true;
-        alertWinner();
-        console.log (`${winner} wins`);
+        scoreboard.innerHTML = `| PLAYER 1: ${playerOneScore} |<br /> | PLAYER 2: ${playerTwoScore} |`
     } else {
         return;
     } 
 }
 
-// need to declare player scores
-let playerOneScore = 0;
-let playerTwoScore = 0;
+
 // 4. Disable further clicks
     // for (let i = 0; i < squareDivs.length; i++) {
     //     squareDivs[i].classList.add(null);
@@ -83,7 +86,6 @@ const alertWinner = () => {
         alert(`CROOOOOOOOOOOOOOOOOOOOOW!`)  
         }
     resultPara.innerText = 'Play Again?';
-    scoreboard.innerHTML = `| PLAYER 1: ${playerOneScore} |<br /> | PLAYER 2: ${playerTwoScore} |`
     whoseTurn.innerText = `${winner} wins!`;
 }
 
@@ -129,7 +131,8 @@ const checkDraw = () => {
     gameFinished = true;
     whoseTurn.innerText = `No one wins. I hope you're happy.`;
     resultPara.innerText = 'You better restart and try harder, pal.'
-}
+    }
+}   
 
 // reset button semiDONE
 const resetButton = document.querySelector('#reset-button');
@@ -155,14 +158,13 @@ resetButton.addEventListener('click', () => {
     // }
 )
 
-
-
-// BONUS:
-// implement reset button without reloading whole page
-// track players wins over time
-// add simple AI that has the computer pick an random empty square
-// Make your computer seem more human by adding a short time delay between your turn and the computer's turn.
-
-// SUPER DUPER BONUS
-// Add an AI that can beat you every time with the mini-max algorithm.
+// this should removes all divs
+// AND THEN recreate them
+// and add square class to them
+const removeClasses = () => {
+    while (container.firstChild) {
+        container.firstChild.remove();
+    }
 }
+
+
