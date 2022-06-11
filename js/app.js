@@ -64,84 +64,59 @@ for (let i = 0; i < squareDivs.length; i++) {
 //  9,5,1
 // can use loop to check! (.square[i])
 // we can use classes to check - if 1,2,3 are the same class, then they win!
+// create winner variable
+let winner;
 const checkWinner = () => {
     // win condition
-    if ((div1.classList.contains('playerOne') && div2.classList.contains('playerOne')) && 
-        (div2.classList.contains('playerOne') && div3.classList.contains('playerOne'))) {
-        alertWinner();
-        playerOneScore += 1;
-    } else if ((div4.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
-        (div5.classList.contains('playerOne') && div6.classList.contains('playerOne'))) {
-        alertWinner();
-        playerOneScore += 1;
-    } else if ((div7.classList.contains('playerOne') && div8.classList.contains('playerOne')) && 
-        (div8.classList.contains('playerOne') && div9.classList.contains('playerOne'))) {
-        alertWinner();
-        playerOneScore += 1;
-    } else if ((div7.classList.contains('playerOne') && div4.classList.contains('playerOne')) && 
-        (div4.classList.contains('playerOne') && div1.classList.contains('playerOne'))) {
-        alertWinner();  
-        playerOneScore += 1;
-    } else if ((div8.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
-        (div5.classList.contains('playerOne') && div2.classList.contains('playerOne'))) {
-        alertWinner();  
-        playerOneScore += 1;
-    } else if ((div9.classList.contains('playerOne') && div6.classList.contains('playerOne')) && 
-        (div6.classList.contains('playerOne') && div3.classList.contains('playerOne'))) {
-        alertWinner(); 
-        playerOneScore += 1; 
-    } else if ((div7.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
-        (div5.classList.contains('playerOne') && div3.classList.contains('playerOne'))) {
-        alertWinner(); 
-        playerOneScore += 1; 
-    } else if ((div9.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
-        (div5.classList.contains('playerOne') && div1.classList.contains('playerOne'))) {
-        alertWinner();  
-        playerOneScore += 1;
-    } else if ((div1.classList.contains('playerTwo') && div2.classList.contains('playerTwo')) && 
-        (div2.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) {
-        alertWinner();
-        playerTwoScore += 1;
-    } else if ((div4.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
-        (div5.classList.contains('playerTwo') && div6.classList.contains('playerTwo'))) {
-        alertWinner();
-        playerTwoScore += 1;
-    } else if ((div7.classList.contains('playerTwo') && div8.classList.contains('playerTwo')) && 
-        (div8.classList.contains('playerTwo') && div9.classList.contains('playerTwo'))) {
-        alertWinner();
-        playerTwoScore += 1;
-    } else if ((div7.classList.contains('playerTwo') && div4.classList.contains('playerTwo')) && 
-        (div4.classList.contains('playerTwo') && div1.classList.contains('playerTwo'))) {
-        alertWinner();  
-        playerTwoScore += 1;
-    } else if ((div8.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
-        (div5.classList.contains('playerTwo') && div2.classList.contains('playerTwo'))) {
-        alertWinner(); 
-        playerTwoScore += 1; 
-    } else if ((div9.classList.contains('playerTwo') && div6.classList.contains('playerTwo')) && 
-        (div6.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) {
-        alertWinner();  
-        playerTwoScore += 1;
-    } else if ((div7.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
-        (div5.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) {
-        alertWinner();  
-        playerTwoScore += 1;
-    } else if ((div9.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
-        (div5.classList.contains('playerTwo') && div1.classList.contains('playerTwo'))) {
-        alertWinner();  
-        playerTwoScore += 1;
-    }
+    if (((div1.classList.contains('playerOne') && div2.classList.contains('playerOne')) && 
+            (div2.classList.contains('playerOne') && div3.classList.contains('playerOne'))) ||
+        ((div4.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
+            (div5.classList.contains('playerOne') && div6.classList.contains('playerOne'))) || 
+        ((div7.classList.contains('playerOne') && div8.classList.contains('playerOne')) && 
+            (div8.classList.contains('playerOne') && div9.classList.contains('playerOne'))) ||
+        ((div7.classList.contains('playerOne') && div4.classList.contains('playerOne')) && 
+            (div4.classList.contains('playerOne') && div1.classList.contains('playerOne'))) ||
+        ((div8.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
+            (div5.classList.contains('playerOne') && div2.classList.contains('playerOne'))) ||
+        ((div9.classList.contains('playerOne') && div6.classList.contains('playerOne')) && 
+            (div6.classList.contains('playerOne') && div3.classList.contains('playerOne'))) ||
+        ((div7.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
+            (div5.classList.contains('playerOne') && div3.classList.contains('playerOne'))) ||
+        ((div9.classList.contains('playerOne') && div5.classList.contains('playerOne')) && 
+            (div5.classList.contains('playerOne') && div1.classList.contains('playerOne')))
+        ) {
+            winner = `PLAYER ONE`;
+            alertWinner();
+    } else if (((div1.classList.contains('playerTwo') && div2.classList.contains('playerTwo')) && 
+            (div2.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) ||
+        ((div4.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
+            (div5.classList.contains('playerTwo') && div6.classList.contains('playerTwo'))) || 
+        ((div7.classList.contains('playerTwo') && div8.classList.contains('playerTwo')) && 
+            (div8.classList.contains('playerTwo') && div9.classList.contains('playerTwo'))) ||
+        ((div7.classList.contains('playerTwo') && div4.classList.contains('playerTwo')) && 
+            (div4.classList.contains('playerTwo') && div1.classList.contains('playerTwo'))) ||
+        ((div8.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
+            (div5.classList.contains('playerTwo') && div2.classList.contains('playerTwo'))) ||
+        ((div9.classList.contains('playerTwo') && div6.classList.contains('playerTwo')) && 
+            (div6.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) ||
+        ((div7.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
+            (div5.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) ||
+        ((div9.classList.contains('playerTwo') && div5.classList.contains('playerTwo')) && 
+            (div5.classList.contains('playerTwo') && div1.classList.contains('playerTwo')))
+        ) {
+            winner = `PLAYER TWO`;
+            alertWinner();
+}
 }
 
 //create function to alert winner and update result p
 const alertWinner = () => {
     if (currentPlayer === 'PLAYER ONE') {
         alert(`Forrester! Forrester! Doctor Clayton Forrester!`);
-        resultPara.innerText = `PLAYER TWO wins!`;
         } else {
         alert(`CROOOOOOOOOOOOOOOOOOOOOW!`)  
-        resultPara.innerText = `PLAYER ONE wins!`;
         }
+    resultPara.innerText = `${winner} wins!`;
     whoseTurn.innerText = 'Play Again?';
 }
 
