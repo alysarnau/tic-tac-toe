@@ -9,12 +9,6 @@
 let turnCounter = 1;
 let currentPlayer = 'PLAYER ONE'
 
-// CREATE OBJECTS TO HOLD SCORES FOR THE PLAYERS
-// THE PLAYERS SHOULD BE OBJECTS
-let playerOne = {score: 0}
-let playerTwo = {score: 0}
-
-
 // set variables for all square divs
 const div1 = document.querySelector('#div1');
 const div2 = document.querySelector('#div2');
