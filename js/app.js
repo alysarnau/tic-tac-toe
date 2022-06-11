@@ -12,13 +12,18 @@ const squareDivs = document.getElementsByClassName('square');
 for (let i = 0; i < squareDivs.length; i++) {
     const squareDiv = document.getElementById(`div${[i]}`)
     squareDivs[i].addEventListener('click', function handleClick(e) {
+        //first, let's test if there's already something there
+        let clickedDiv = document.getElementById(`div${[i]}`);
+        console.log(clickedDiv);
         // Adds appropriate image to clicked square
         if (currentPlayer === 'PLAYER ONE') {
-            squareDivs[i].classList.add('playerOne')
+            squareDivs[i].classList.add('playerOne');
+            // problem with this is that it doesn't stop turncounter
         } else {
-            squareDivs[i].classList.add('playerTwo')
+            squareDivs[i].classList.add('playerTwo');
         }
         turnCounter += 1;
+        //turnCounter += 1;
         // this changes the current player!
         if ((turnCounter % 2) ==! 0) {
             currentPlayer = 'PLAYER ONE';
@@ -26,8 +31,9 @@ for (let i = 0; i < squareDivs.length; i++) {
             currentPlayer = 'PLAYER TWO';
         }
         // change whoseTurn text
-        whoseTurn.innerHTML = `It's ${currentPlayer}'s turn!`;
-        })
+        whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
+        // this only lets a person click once!
+        }, {once:true})
 }
 
 // set variables for all square divs
@@ -43,7 +49,6 @@ const divNine = document.querySelector('#div9');
 
 // define whose-turn p
 const whoseTurn = document.querySelector('#whose-turn');
-console.log(whoseTurn);
 
 // on square click, we want to
 //  1. set background of div to either crow (image1) or forrester (image2) by
