@@ -97,6 +97,15 @@ function addClickHandling() {
     }
 }
 
+// player turn changer
+function takeTurns() {
+    if ((turnCounter % 2) ==! 0) {
+        currentPlayer = 'PLAYER ONE';
+    } else {
+        currentPlayer = 'PLAYER TWO';
+    }
+}
+
 function handleClick(e) {
     //first, let's test if it's already been clicked!
     if (e.target.classList.contains('clicked')) {
@@ -114,14 +123,8 @@ function handleClick(e) {
     checkDraw();
     checkWinner();
     checkIfFinished();
-    turnCounter += 1;
-    // this changes the current player!
-    if ((turnCounter % 2) ==! 0) {
-        currentPlayer = 'PLAYER ONE';
-    } else {
-        currentPlayer = 'PLAYER TWO';
-    }
-    // checks to see if game is done
+    turnCounter++;
+    takeTurns();
     if (gameFinished === false) {
         whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
     }
@@ -213,3 +216,30 @@ function chooseRandom() {
     return unclickedSelection;
 }
 
+// for computer to play, we need to 
+//  !!!! if currentPlayer === 2!!!!!!!
+// 1. allow it to choose at random from list of unclicked squares
+// 2. select that square (add class playerTwo to it)
+// 2a. add time delay before choice
+// 3. change turn order back to person (playerOne)
+
+function computerSelects() {
+    let computerChoice = chooseRandom();
+    console.log(computerChoice);
+    computerChoice.classList.add('playerTwo');
+    computerChoice.innerHTML = `<span>${currentPlayer}</span>`;
+    checkDraw();
+    checkWinner();
+    checkIfFinished();
+    turnCounter += 1;
+    // this changes the current player!
+    if ((turnCounter % 2) ==! 0) {
+        currentPlayer = 'PLAYER ONE';
+    } else {
+        currentPlayer = 'PLAYER TWO';
+    }
+    // checks to see if game is done
+    if (gameFinished === false) {
+        whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
+    }
+}
