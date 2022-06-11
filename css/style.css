@@ -3,7 +3,7 @@
 body {
     font-family: 'Kdam Thmor Pro', sans-serif;
     width: 300px;
-    margin: 50px auto;
+    margin: 150px auto;
     text-align: center;
     background-color: #FFF3B0;
     /*background-image: url('https://opuszine.us/_assets/entries/mst3k-satellite.jpg');*/
@@ -86,4 +86,30 @@ span {
 
 #crow {
     font-size: 32px;
+}
+
+#moon {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+}
+
+#the-moon {
+    max-width: 350px;
+}
+
+@media (max-width: 1200px) {
+    #moon {
+        left: 0px;
+        top: 0px;
+    }    
+    #the-moon {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 400px) {
+    #moon {
+        visibility: hidden;
+    }    
 }
