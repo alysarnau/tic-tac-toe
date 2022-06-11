@@ -146,14 +146,14 @@ resetButton.addEventListener('click', () => {
     console.log(resetButton);
     location.reload();
     // these functions will reset things
-    // resetting is working but it's NOT checking for win state!
-    // resetDivs()
+    // resetting is working but it's always alerting to a win on next click now?
+    // clearDivs()
     // resetGameState();
     // addClickHandling();
     }
 )
 // reset functionality
-const removeDivs = () => {
+const clearDivs = () => {
     while (container.firstChild) {
         container.firstChild.remove();
     }
@@ -166,7 +166,7 @@ const createDivs = () => {
         //sets Class
         div.setAttribute('class', 'square');
         // appends to container
-        div.innerHTML = `${i}`;
+        div.innerHTML = `<span>${i}</span>`;
         container.appendChild(div);
         addClickHandling()
     }
@@ -183,12 +183,11 @@ const resetGameState = () => {
     turnCounter = 1;
 }
 
-//it's adding it, but it stinks
 function checkIfFinished () {
     if (gameFinished === true) {
         console.log(gameFinished);
         // add 'clicked' class to all empty divs
-        // this will stop further stuff from happening!!!
+        // this will stop further clicks from happening!!!
         for (let i = 0; i < squareDivs.length; i++) {
             if (!(squareDivs[i]).classList.contains('clicked')) {
                 squareDivs[i].classList.add('clicked');    
@@ -199,6 +198,19 @@ function checkIfFinished () {
     };
 }
 
+//dupe of what we have with two functions above
 function resetDivs() {
 container.innerHTML = '<div class="square" id="div1"><span>1</span></div><div class="square"id="div2"><span>2</span></div><div class="square"id="div3"><span>3</span></div><div class="square"id="div4"><span>4</span></div><div class="square"id="div5"><span>5</span></div><div class="square"id="div6"><span>6</span></div><div class="square"id="div7"><span>7</span></div><div class="square"id="div8"><span>8</span></div><div class="square"id="div9"><span>9</span>';
 }
+
+// function to randomly choose unclicked square
+function chooseRandom() {
+    // need to generate array of divs that are unclicked
+    const unclicked = document.querySelectorAll('.square:not(.clicked)');
+    // randomly select one of those
+    const randomIndex = Math.floor(Math.random() * unclicked.length);
+    const unclickedSelection = unclicked[randomIndex];
+    return unclickedSelection;
+}
+
+console.log(chooseRandom());

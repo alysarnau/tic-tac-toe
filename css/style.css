@@ -42,7 +42,7 @@ button {
 
 button:hover {
     background-color: #9E2A2B;
-    color: white;
+    color: whitesmoke;
 }
 
 h3 {
@@ -96,21 +96,21 @@ span {
 }
 
 #the-moon {
-    max-width: 350px;
+    max-width: 300px;
 }
 
 @media (max-width: 1200px) {
     #moon {
-        left: 0px;
-        top: 0px;
+        left: 25px;
+        top: 25px;
     }    
     #the-moon {
-        max-width: 200px;
+        max-width: 150px;
     }
 }
 
 @media (max-width: 400px) {
-    #moon {
+    #the-moon {
         visibility: hidden;
     }    
 }
