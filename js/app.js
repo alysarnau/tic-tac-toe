@@ -19,7 +19,7 @@ for (let i = 0; i < squareDivs.length; i++) {
             squareDivs[i].classList.add('playerTwo')
         }
         turnCounter += 1;
-        // changes player!
+        // this changes the current player!
         if ((turnCounter % 2) ==! 0) {
             currentPlayer = 'PLAYER ONE';
         } else {
@@ -27,9 +27,6 @@ for (let i = 0; i < squareDivs.length; i++) {
         }
         // change whoseTurn text
         whoseTurn.innerHTML = `It's ${currentPlayer}'s turn!`;
-        // console.log((squareDivs[i]));
-        // console.log(currentPlayer);
-        // console.log(turnCounter);
         })
 }
 
