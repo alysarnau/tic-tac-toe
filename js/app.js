@@ -1,3 +1,8 @@
+// 22:33 STATUS - TBD
+
+// Figure out how to use reset button without refreshing whole page
+// Stop game and declare winner once either playerScore = 3
+
 //create turn counter! Odds = player1, Evens = player2
 let turnCounter = 1;
 let currentPlayer = 'PLAYER ONE'
@@ -13,57 +18,14 @@ const div7 = document.querySelector('#div7');
 const div8 = document.querySelector('#div8');
 const div9 = document.querySelector('#div9');
 
-// define whose-turn p
+// define text blocks
 const whoseTurn = document.querySelector('#whose-turn');
 const resultPara = document.querySelector('#win-lose');
+const scoreboard = document.querySelector('#scoreboard');
 // define container and squareDivs
 const container = document.querySelector('#container');
 const squareDivs = document.getElementsByClassName('square');
 
-// add event listener to all divs
-for (let i = 0; i < squareDivs.length; i++) {
-    const squareDiv = document.getElementById(`div${[i]}`)
-    squareDivs[i].addEventListener('click', function handleClick(e) {
-        //first, let's test if there's already something there
-        // Adds appropriate image to clicked square
-        if (currentPlayer === 'PLAYER ONE') {
-            squareDivs[i].classList.add('playerOne');
-            // problem with this is that it doesn't stop turncounter
-        } else {
-            squareDivs[i].classList.add('playerTwo');
-        }
-        turnCounter += 1;
-        //turnCounter += 1;
-        // this changes the current player!
-        if ((turnCounter % 2) ==! 0) {
-            currentPlayer = 'PLAYER ONE';
-        } else {
-            currentPlayer = 'PLAYER TWO';
-        }
-        // change whoseTurn text
-        whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
-        // check for WIN CONDITION
-        checkWinner();
-        },
-        // this only lets a person click once!
-        {once:true})
-}
-
-// easier way to test draw conditions - start at the middle going down: down middle, up left, down right
-
-// we want to evaluate a win condition after each turn
-// what does a win condition look like? 8 win conditions
-// the same image in the following combinations
-//  1,2,3
-//  4,5,6
-//  7,8,9
-//  7,4,1
-//  8,5,2
-//  9,6,3
-//  7,5,3
-//  9,5,1
-// can use loop to check! (.square[i])
-// we can use classes to check - if 1,2,3 are the same class, then they win!
 // create winner variable
 let winner;
 const checkWinner = () => {
@@ -86,6 +48,7 @@ const checkWinner = () => {
             (div5.classList.contains('playerOne') && div1.classList.contains('playerOne')))
         ) {
             winner = `PLAYER ONE`;
+            playerOneScore += 1;
             alertWinner();
     } else if (((div1.classList.contains('playerTwo') && div2.classList.contains('playerTwo')) && 
             (div2.classList.contains('playerTwo') && div3.classList.contains('playerTwo'))) ||
@@ -105,19 +68,9 @@ const checkWinner = () => {
             (div5.classList.contains('playerTwo') && div1.classList.contains('playerTwo')))
         ) {
             winner = `PLAYER TWO`;
+            playerTwoScore += 1;
             alertWinner();
-}
-}
-
-//create function to alert winner and update result p
-const alertWinner = () => {
-    if (currentPlayer === 'PLAYER ONE') {
-        alert(`Forrester! Forrester! Doctor Clayton Forrester!`);
-        } else {
-        alert(`CROOOOOOOOOOOOOOOOOOOOOW!`)  
-        }
-    resultPara.innerText = `${winner} wins!`;
-    whoseTurn.innerText = 'Play Again?';
+    }
 }
 
 // on WIN condition, what do we want it to do?
@@ -126,14 +79,81 @@ const alertWinner = () => {
 // need to declare player scores
 let playerOneScore = 0;
 let playerTwoScore = 0;
-// 3. If player1 or player2 score = 3, declare winner!
-//  3a. Update final 'div' text with final score
 // 4. Disable further clicks
     // for (let i = 0; i < squareDivs.length; i++) {
     //     squareDivs[i].classList.add(null);
     // }
 
-// reset button DONE
+// add event listener to all divs
+for (let i = 0; i < squareDivs.length; i++) {
+    const squareDiv = document.getElementById(`div${[i]}`)
+    squareDivs[i].addEventListener('click', function handleClick(e) {
+        //first, let's test if there's already something there
+        // Adds appropriate image to clicked square
+        squareDivs[i].classList.add('clicked');
+        if (currentPlayer === 'PLAYER ONE') {
+            squareDivs[i].classList.add('playerOne');
+            // problem with this is that it doesn't stop turncounter
+        } else {
+            squareDivs[i].classList.add('playerTwo');
+        }
+        turnCounter += 1;
+        //turnCounter += 1;
+        // this changes the current player!
+        if ((turnCounter % 2) ==! 0) {
+            currentPlayer = 'PLAYER ONE';
+        } else {
+            currentPlayer = 'PLAYER TWO';
+        }
+        // change whoseTurn text
+        whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
+        // check for WIN CONDITION
+        checkWinner();
+        checkDraw();
+        },
+        // this only lets a person click once!
+        {once:true})
+}
+
+// Detect Draw function
+// create variable for clicked divs
+const clickedDivs = document.getElementsByClassName('clicked');
+const checkDraw = () => {
+    if (squareDivs.length === clickedDivs.length) {
+    console.log('tis a draw');
+    whoseTurn.innerText = `No one wins. I hope you're happy.`;
+    resultPara.innerText = 'You better restart and try harder, pal.'
+}
+
+// we want to evaluate a win condition after each turn
+// what does a win condition look like? 8 win conditions
+// the same image in the following combinations
+//  1,2,3
+//  4,5,6
+//  7,8,9
+//  7,4,1
+//  8,5,2
+//  9,6,3
+//  7,5,3
+//  9,5,1
+// can use loop to check? (.square[i])
+
+console.log(scoreboard);
+//create function to alert winner and update result p
+const alertWinner = () => {
+    if (currentPlayer === 'PLAYER ONE') {
+        alert(`Forrester! Forrester! Doctor Clayton Forrester!`);
+        } else {
+        alert(`CROOOOOOOOOOOOOOOOOOOOOW!`)  
+        }
+    resultPara.innerText = 'Play Again?';
+    scoreboard.innerHTML = `| PLAYER 1: ${playerOneScore} |<br /> | PLAYER 2: ${playerTwoScore} |`
+    whoseTurn.innerText = `${winner} wins!`;
+}
+
+
+
+// reset button semiDONE
 const resetButton = document.querySelector('#reset-button');
 resetButton.addEventListener('click', () => {
     console.log(resetButton);
@@ -171,4 +191,4 @@ resetButton.addEventListener('click', () => {
 
 // SUPER DUPER BONUS
 // Add an AI that can beat you every time with the mini-max algorithm.
-
+}
