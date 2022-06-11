@@ -1,9 +1,13 @@
-// 22:33 STATUS - TBD
-
+// 22:33 STATUS - ALMOST DONE!
+// track players wins over time [DONE]
 // Figure out how to use reset button without refreshing whole page
 // Stop game and declare winner once either playerScore = 3
+// Create simple function that chooses and selects empty square at random
+// Add time delay bw your turn and computer turn
+// create a mini-max algo
+    // https://towardsdatascience.com/how-a-chess-playing-computer-thinks-about-its-next-move-8f028bd0e7b1
 
-//create turn counter! Odds = player1, Evens = player2
+//creates turn counter!
 let turnCounter = 1;
 let currentPlayer = 'PLAYER ONE'
 
