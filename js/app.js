@@ -223,10 +223,21 @@ function chooseRandom() {
 // 2a. add time delay before choice
 // 3. change turn order back to person (playerOne)
 
+//define AI button
+const computerButton = document.querySelector('#MCP');
+console.log(computerButton);
+// add event handler to it
+computerButton.addEventListener('click', (e) => {
+    console.log(chooseRandom());
+    computerSelects();
+})
+
+//computer plays and changes turn
 function computerSelects() {
     let computerChoice = chooseRandom();
     console.log(computerChoice);
     computerChoice.classList.add('playerTwo');
+    computerChoice.classList.add('clicked');
     computerChoice.innerHTML = `<span>${currentPlayer}</span>`;
     checkDraw();
     checkWinner();
