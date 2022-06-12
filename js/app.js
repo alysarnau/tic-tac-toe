@@ -1,13 +1,9 @@
-// reset button not working
+//BUGS
+// reset button NOT working
 
+//TBD
 // Stop game and declare winner once either playerScore = 3
-// Create simple function that chooses and selects empty square at random
-    // CREATE FUNCTION
-    // CREATE BUTTON 
-    // LINK FUNCTION TO BUTTON
-// Add time delay bw your turn and computer turn
-// create a mini-max algo SUPER BONUS
-    // https://towardsdatascience.com/how-a-chess-playing-computer-thinks-about-its-next-move-8f028bd0e7b1
+// create game mode where computer plays as P2
 
 //creates turn counter!
 let turnCounter = 1;
@@ -62,7 +58,6 @@ const checkWinner = () => {
         ((div9.innerHTML === div5.innerHTML) && (div5.innerHTML === div1.innerHTML)))
     {
         winner = currentPlayer;
-        console.log(winner);
         gameFinished = true;
         alertWinner();
         console.log (`${winner} wins`);
@@ -149,18 +144,18 @@ const checkDraw = () => {
 const resetButton = document.querySelector('#reset-button');
 resetButton.addEventListener('click', () => {
     console.log(resetButton);
-    //location.reload();
+    location.reload();
     // these functions will reset things
     // resetting is working but it's always alerting to a win on next click now?
-    resetGameState();
-    resetText();
-    clearDivs();
-    createDivs();
-    addClickHandling();
+    // resetGameState();
+    // resetText();
+    // emptyDivs();
+    // resetDivs();
+    // addClickHandling();
     //remove robot class from 
     surpriseDiv.removeAttribute('id','robots');
-    }
-)
+})
+
 // reset functionality
 const clearDivs = () => {
     while (container.firstChild) {
@@ -271,3 +266,25 @@ function computerSelects() {
 // CREATE GAME FUNCTION THAT ALWAYS RUNS computerSelects() when player 2 is current player!
 // 1. create button
 // 2. event handler that runs the function
+
+
+function emptyDivs () {
+    div1.innerHTML = `<span>1</span>`;
+    div2.innerHTML = `<span>2</span>`;
+    div3.innerHTML = `<span>3</span>`;
+    div4.innerHTML = `<span>4</span>`;
+    div5.innerHTML = `<span>5</span>`;
+    div6.innerHTML = `<span>6</span>`;
+    div7.innerHTML = `<span>7</span>`;
+    div8.innerHTML = `<span>8</span>`;
+    div9.innerHTML = `<span>9</span>`;
+    for (let i = 0; i < squareDivs.length; i++) {
+        //if div classList contains either p1 or p2;
+        if (squareDivs[i].classList.contains('playerOne') || squareDivs[i].classList.contains('playerTwo') || squareDivs[i].classList.contains('clicked')) {
+        // remove playerOne and playerTwo classes from all
+            squareDivs[i].classList.remove('clicked');            
+            squareDivs[i].classList.remove('playerOne');
+            squareDivs[i].classList.remove('playerTwo');
+        }
+    }
+}
