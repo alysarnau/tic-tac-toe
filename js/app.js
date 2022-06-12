@@ -80,10 +80,10 @@ const checkWinner = () => {
 //create function to alert winner and update result text
 const alertWinner = () => {
     if (currentPlayer === 'PLAYER TWO') {
-        alert(`Forrester! Forrester! Doctor Clayton Forrester!`);
-        } else {
-        alert(`CROOOOOOOOOOOOOOOOOOOOOW!`)  
-        }
+    alert(`Forrester! Forrester! Doctor Clayton Forrester!`);
+    } else {
+    alert(`CROOOOOOOOOOOOOOOOOOOOOW!`)  
+    }
     resultPara.innerText = 'Play Again?';
     whoseTurn.innerText = `${winner} wins!`;
     surpriseDiv.setAttribute('id','robots');
@@ -108,8 +108,8 @@ function takeTurns() {
 
 function handleClick(e) {
     //first, let's test if it's already been clicked!
-    if (e.target.classList.contains('clicked')) {
-    console.log('already clicked');
+if (e.target.classList.contains('clicked')) {
+        console.log('already clicked');
 } else {
     // Adds appropriate image to clicked square
     e.target.classList.add('clicked');
@@ -120,9 +120,11 @@ function handleClick(e) {
         e.target.classList.add('playerTwo');
         e.target.innerHTML = `<span>${currentPlayer}</span>`;
     }
-    checkDraw();
-    checkWinner();
-    checkIfFinished();
+    if (turnCounter > 4) {
+        checkDraw();
+        checkWinner();
+        checkIfFinished();
+    }
     turnCounter++;
     takeTurns();
     if (gameFinished === false) {
@@ -147,12 +149,16 @@ const checkDraw = () => {
 const resetButton = document.querySelector('#reset-button');
 resetButton.addEventListener('click', () => {
     console.log(resetButton);
-    location.reload();
+    //location.reload();
     // these functions will reset things
     // resetting is working but it's always alerting to a win on next click now?
-    // clearDivs()
-    // resetGameState();
-    // addClickHandling();
+    resetGameState();
+    resetText();
+    clearDivs();
+    createDivs();
+    addClickHandling();
+    //remove robot class from 
+    surpriseDiv.removeAttribute('id','robots');
     }
 )
 // reset functionality
@@ -184,6 +190,7 @@ const resetGameState = () => {
     gameFinished = false;
     currentPlayer = 'PLAYER ONE';
     turnCounter = 1;
+    winner = undefined;
 }
 
 function checkIfFinished () {
@@ -234,23 +241,33 @@ computerButton.addEventListener('click', (e) => {
 
 //computer plays and changes turn
 function computerSelects() {
+    resultPara.innerText = 'Thinking...';
     let computerChoice = chooseRandom();
     console.log(computerChoice);
-    computerChoice.classList.add('playerTwo');
-    computerChoice.classList.add('clicked');
-    computerChoice.innerHTML = `<span>${currentPlayer}</span>`;
-    checkDraw();
-    checkWinner();
-    checkIfFinished();
-    turnCounter += 1;
-    // this changes the current player!
-    if ((turnCounter % 2) ==! 0) {
-        currentPlayer = 'PLAYER ONE';
-    } else {
-        currentPlayer = 'PLAYER TWO';
-    }
-    // checks to see if game is done
-    if (gameFinished === false) {
-        whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
-    }
+    const timeDelay = 1200;
+    setTimeout(function() {
+        computerChoice.classList.add('playerTwo');
+        computerChoice.classList.add('clicked');
+        computerChoice.innerHTML = `<span>${currentPlayer}</span>`;
+        checkDraw();
+        checkWinner();
+        checkIfFinished();
+        resultPara.innerText = ''
+        turnCounter += 1;
+        // this changes the current player!
+        if ((turnCounter % 2) ==! 0) {
+            currentPlayer = 'PLAYER ONE';
+        } else {
+            currentPlayer = 'PLAYER TWO';
+        }
+        // checks to see if game is done
+        if (gameFinished === false) {
+            whoseTurn.innerHTML = `${currentPlayer}'s turn!`;
+        }
+    }, timeDelay)
+    ;
 }
+
+// CREATE GAME FUNCTION THAT ALWAYS RUNS computerSelects() when player 2 is current player!
+// 1. create button
+// 2. event handler that runs the function
