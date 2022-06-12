@@ -5,6 +5,10 @@
 // Stop game and declare winner once either playerScore = 3
 // create game mode where computer plays as P2
 
+// create object to track win state
+const gameBoard = {}
+// on click, create key with divNumber and value of currentPlayer name
+
 //creates turn counter!
 let turnCounter = 1;
 let currentPlayer = 'PLAYER ONE'
@@ -108,6 +112,13 @@ if (e.target.classList.contains('clicked')) {
 } else {
     // Adds appropriate image to clicked square
     e.target.classList.add('clicked');
+    // WORK ON IMPLEMENTING THIS WITH gameBoard object
+    // this declares clicked div id 
+    const currentDivID = e.target.id;
+    // need to figure how to a new key + value pair for these 
+    // key name = currentDivId
+    // valueName = currentplayer
+    // e.target.id will return the id of the clicked square!
     if (currentPlayer === 'PLAYER ONE') {
         e.target.classList.add('playerOne');
         e.target.innerHTML = `<span>${currentPlayer}</span>`;
@@ -152,7 +163,7 @@ resetButton.addEventListener('click', () => {
     // emptyDivs();
     // resetDivs();
     // addClickHandling();
-    //remove robot class from 
+    //remove robot class from surprise div
     surpriseDiv.removeAttribute('id','robots');
 })
 
@@ -218,16 +229,8 @@ function chooseRandom() {
     return unclickedSelection;
 }
 
-// for computer to play, we need to 
-//  !!!! if currentPlayer === 2!!!!!!!
-// 1. allow it to choose at random from list of unclicked squares
-// 2. select that square (add class playerTwo to it)
-// 2a. add time delay before choice
-// 3. change turn order back to person (playerOne)
-
 //define AI button
 const computerButton = document.querySelector('#MCP');
-console.log(computerButton);
 // add event handler to it
 computerButton.addEventListener('click', (e) => {
     console.log(chooseRandom());
@@ -263,11 +266,6 @@ function computerSelects() {
     ;
 }
 
-// CREATE GAME FUNCTION THAT ALWAYS RUNS computerSelects() when player 2 is current player!
-// 1. create button
-// 2. event handler that runs the function
-
-
 function emptyDivs () {
     div1.innerHTML = `<span>1</span>`;
     div2.innerHTML = `<span>2</span>`;
@@ -288,3 +286,20 @@ function emptyDivs () {
         }
     }
 }
+
+let gameMode;
+
+function autoPlay() {
+    gameMode = 'autoPlay';
+    while (winner === undefined) {
+        if (currentPlayer === 'PLAYER TWO') {
+            computerSelects()
+            } else {
+            console.log('waiting');
+            }
+    }
+}
+
+// CREATE GAME FUNCTION THAT ALWAYS RUNS computerSelects() when player 2 is current player!
+// 1. create button
+// 2. event handler that runs the function
