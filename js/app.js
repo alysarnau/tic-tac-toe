@@ -1,7 +1,8 @@
-//BUGS
+// KNOWN BUGS
 // reset button NOT working
 
 //TBD
+// Clean up checking for win state by implementing gameBoard obj
 // Stop game and declare winner once either playerScore = 3
 // create game mode where computer plays as P2
 
