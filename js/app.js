@@ -7,7 +7,10 @@
 // create game mode where computer plays as P2
 
 // create object to track win state
-const gameBoard = {}
+const gameBoard = {
+}
+
+// set up win conditions
 // on click, create key with divNumber and value of currentPlayer name
 
 //creates turn counter!
